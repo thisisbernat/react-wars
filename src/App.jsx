@@ -71,7 +71,7 @@ export default function App() {
     <Layout>
       <div className="flex-1 flex flex-col mx-12 md:mx-38 md:max-w-1/3 mt-10 md:mt-0 md:justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="bg-zinc-300 dark:bg-zinc-800 p-4 rounded flex flex-col gap-2">
+          <div className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded flex flex-col gap-2">
             <div><Search handleSubmit={handleSearchSubmit} handleTerm={handleSearchTerm} searchTerm={searchTerm} cleanTerm={cleanSearchTerm} /></div>
             {isLoading ? <div className="my-56"><Loader /></div> : (people.map((person, i) => {
               return (
@@ -79,17 +79,17 @@ export default function App() {
               )
             }))}
             <div className="flex justify-between items-center">
-              {prevPage ? <button className="text-white font-medium p-3 pr-4 bg-slate-600 rounded-sm flex items-center justify-center" onClick={getPrevPage}><BiChevronLeft />Prev</button> : <div className="text-gray-500 font-medium p-3 pr-4 bg-slate-600 rounded-sm flex items-center cursor-default"><BiChevronLeft />Prev</div>}
-              <div className="text-zinc-700 dark:text-white font-medium p-3">Page {currentPage === '' ? '1' : currentPage}</div>
-              {nextPage ? <button className="text-white font-medium p-3 pl-4 bg-slate-600 rounded-sm flex items-center" onClick={getNextPage}>Next<BiChevronRight /></button> : <div className="text-gray-500 font-medium p-3 pl-4 bg-slate-600 rounded-sm flex items-center cursor-default">Next<BiChevronRight /></div>}
+              {prevPage ? <button className="text-white text-sm p-3 pr-4 bg-slate-600 rounded-sm flex items-center justify-center" onClick={getPrevPage}><BiChevronLeft className="h-4 w-auto" />Prev</button> : <div className="text-gray-500 text-sm p-3 pr-4 bg-slate-600 rounded-sm flex items-center cursor-default"><BiChevronLeft className="h-4 w-auto" />Prev</div>}
+              <div className="text-zinc-700 dark:text-white p-3 text-xs md:text-base text-center">Page {currentPage === '' ? '1' : currentPage}</div>
+              {nextPage ? <button className="text-white text-sm p-3 pl-4 bg-slate-600 rounded-sm flex items-center" onClick={getNextPage}>Next<BiChevronRight className="h-4 w-auto" /></button> : <div className="text-gray-500 text-sm p-3 pl-4 bg-slate-600 rounded-sm flex items-center cursor-default">Next<BiChevronRight className="h-4 w-auto" /></div>}
             </div>
           </div>
-          {location === '/' && <div className="bg-zinc-300 dark:bg-zinc-800 rounded flex justify-center items-center">
+          {location === '/' && <div className="bg-zinc-100 dark:bg-zinc-800 rounded flex justify-center items-center">
             <Details isPersonSelected={false} />
           </div>}
           <Route path="/character/:personId">
             {(params) => (
-              <div className="bg-zinc-300 dark:bg-zinc-800 rounded flex justify-center items-center mb-5">
+              <div className="bg-zinc-100 dark:bg-zinc-800 rounded flex justify-center items-center mb-5 md:mb-0">
                 <Details personId={params.personId} />
               </div>
             )}

@@ -19,7 +19,7 @@ export default function Details({ personId, isPersonSelected = true }) {
   if (!isPersonSelected) {
     return (
       <div className="mx-auto text-center">
-        <h1 className="dark:text-zinc-300 font-semibold text-lg md:border-2 border-zinc-300 p-2 rounded-sm">Click on a character's name to display its details</h1>
+        <h1 className="dark:text-zinc-300 font-semibold text-lg md:border-2 border-zinc-800 dark:border-zinc-300 p-2 rounded-sm">Click on a character's name to display its details</h1>
       </div>
     )
   } else {
