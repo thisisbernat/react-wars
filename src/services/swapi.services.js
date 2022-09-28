@@ -1,12 +1,8 @@
-const getPeople = async (pageId = '1', resultsOnly = true) => {
+const getPeople = async (pageId = '1') => {
   try {
     const ApiRes = await fetch(`https://swapi.dev/api/people/?page=${pageId}`)
     const peopleRes = await ApiRes.json()
-    if (resultsOnly) {
-      return peopleRes.results
-    } else {
-      return peopleRes
-    }
+    return peopleRes
   } catch (err) {
     console.error(err)
   }
@@ -17,7 +13,7 @@ const getAllPeople = async () => {
     let allPeople = []
     let next = '1'
     while (next) {
-      const people = await getPeople(next, false)
+      const people = await getPeople(next)
       allPeople = [...allPeople, ...people.results]
       next = people.next?.split('=')[1]
     }
@@ -27,18 +23,24 @@ const getAllPeople = async () => {
   }
 }
 
-const getPerson = async (personId = '1', resultsOnly = true) => {
+const getPerson = async (personId = '1') => {
   try {
     const ApiRes = await fetch(`https://swapi.dev/api/people/${personId}`)
     const personRes = await ApiRes.json()
-    if (resultsOnly) {
-      return personRes.results
-    } else {
-      return personRes
-    }
+    return personRes
   } catch (err) {
     console.error(err)
   }
 }
 
-export { getPeople, getAllPeople, getPerson }
+const searchPerson = async (name) => {
+  try {
+    const ApiRes = await fetch(`https://swapi.dev/api/people/?search=${name}`)
+    const personRes = await ApiRes.json()
+    return personRes
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export { getPeople, getAllPeople, getPerson, searchPerson }
