@@ -1,8 +1,6 @@
 # 🌌 React Wars [![CodeFactor](https://www.codefactor.io/repository/github/thisisbernat/react-wars/badge)](https://www.codefactor.io/repository/github/thisisbernat/react-wars)
 
-This is a frontend app build with React. It consumes data from the [Star Wars API](https://swapi.dev/) and it displays a paginated list of characters, and a detailed view if you click on any of them.
-
-It also allows the user to search for an specific character's name in a search box.
+This is a frontend app build with React. It consumes data from the [Star Wars API](https://swapi.dev/) and it displays a paginated list of characters, and a detailed view by clicking on any of them. It also allows the user to search for an specific character's name in a search box.
 
 This app is deployed at https://react-wars.vercel.app/
 
