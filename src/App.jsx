@@ -5,7 +5,7 @@ import Layout from './components/Layout'
 import Loader from './components/Loader'
 import Search from './components/Search'
 import Details from './components/Details'
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
+import PagButton from './components/PagButton'
 
 export default function App() {
   const [people, setPeople] = useState([])
@@ -79,21 +79,22 @@ export default function App() {
               )
             }))}
             <div className="flex justify-between items-center">
-              {prevPage ? <button className="text-white text-sm p-3 pr-4 bg-slate-600 rounded-sm flex items-center justify-center" onClick={getPrevPage}><BiChevronLeft className="h-4 w-auto" />Prev</button> : <div className="text-gray-500 text-sm p-3 pr-4 bg-slate-600 rounded-sm flex items-center cursor-default"><BiChevronLeft className="h-4 w-auto" />Prev</div>}
+              {prevPage ? <PagButton type={'prev'} isActive={true} getPrevPage={getPrevPage} /> : <PagButton type={'prev'} isActive={false} />}
+
               <div className="text-zinc-700 dark:text-white p-3 text-xs md:text-base text-center">Page {currentPage === '' ? '1' : currentPage}</div>
-              {nextPage ? <button className="text-white text-sm p-3 pl-4 bg-slate-600 rounded-sm flex items-center" onClick={getNextPage}>Next<BiChevronRight className="h-4 w-auto" /></button> : <div className="text-gray-500 text-sm p-3 pl-4 bg-slate-600 rounded-sm flex items-center cursor-default">Next<BiChevronRight className="h-4 w-auto" /></div>}
+
+              {nextPage ? <PagButton type={'next'} isActive={true} getNextPage={getNextPage} /> : <PagButton type={'next'} isActive={false} />}
             </div>
           </div>
-          {location === '/' && <div className="bg-zinc-100 dark:bg-zinc-800 rounded flex justify-center items-center">
-            <Details isPersonSelected={false} />
-          </div>}
-          <Route path="/character/:personId">
-            {(params) => (
-              <div className="bg-zinc-100 dark:bg-zinc-800 rounded flex justify-center items-center mb-5 md:mb-0">
+          <div className="bg-zinc-100 dark:bg-zinc-800 rounded flex justify-center items-center mb-5 md:mb-0">
+            {location === '/' && <Details isPersonSelected={false} />}
+            <Route path="/character/:personId">
+              {(params) => (
                 <Details personId={params.personId} />
-              </div>
-            )}
-          </Route>
+              )}
+            </Route>
+          </div>
+
         </div>
       </div>
     </Layout>
